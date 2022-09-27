@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  resources :bookings, shallow: true, only: [:new, :index, :show, :create, :destroy] do
+  end
+
 end
