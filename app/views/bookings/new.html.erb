@@ -1,2 +1,8 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h2>New booking</h2>
+<div>
+  <% @demons.each do |demon| %>
+    <div>
+      <%= render "booking", demon: demon, booking: @booking, user: @user %>
+    </div>
+  <% end %>
+</div>
