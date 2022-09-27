@@ -10,14 +10,24 @@
   </head>
 
   <body>
+
     <div class="d-flex flex-column min-vh-100"">
         <%= render "layouts/header" %>
 
         <div class="container p-4 p-md-5">
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        
           <%= yield %>
+          
         </div>
 
         <%= render "layouts/footer" %>
     </div>
+
   </body>
 </html>
