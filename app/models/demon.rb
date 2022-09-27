@@ -1,0 +1,2 @@
+class Demon < ApplicationRecord
+end
