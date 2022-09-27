@@ -1,0 +1,8 @@
+<h3>Bookings for <%= @user.name %></h3>
+<div>
+  <% @bookings.each do |booking| %>
+    <div>
+      <%= link_to booking.demon.name, booking %>
+    </div>
+  <% end %>
+</div>
