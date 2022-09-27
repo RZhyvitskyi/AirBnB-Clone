@@ -33,6 +33,8 @@ gem 'rack-livereload'
 gem 'sass-rails'
 gem 'bootstrap'
 
+gem "devise"
+
 gem "faker"
 
 # Use Redis adapter to run Action Cable in production
