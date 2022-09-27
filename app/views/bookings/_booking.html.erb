@@ -1,0 +1,6 @@
+<%= form_with model: booking, class: "d-flex flex-column align-items-start gap-2" do |f| %>
+  <%= f.label demon.name %>
+  <%= f.hidden_field :demon_id, value: demon.id %>
+  <%= f.hidden_field :user_id, value: user.id %>
+  <%= f.submit class: "btn btn-secondary" %>
+<% end %>
