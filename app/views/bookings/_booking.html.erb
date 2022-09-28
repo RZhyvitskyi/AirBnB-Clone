@@ -1,5 +1,15 @@
-<%= form_with model: booking, class: "d-flex flex-column align-items-start gap-2" do |f| %>
-  <%= f.label demon.name %>
+<%= form_with model: booking, class: "d-flex flex-column align-items-start" do |f| %>
   <%= f.hidden_field :demon_id, value: demon.id %>
+  <%= f.label demon.name, class: "mb-3" %>
+  <div class="mb-3 d-flex flex-column gap-3">
+    <div>
+      <%= f.label :from_date %>
+      <%= f.datetime_select :from_date, :minute_step => 15 %>
+    </div>
+    <div>
+      <%= f.label :to_date %>
+      <%= f.datetime_select :to_date, :minute_step => 15 %>
+    </div>
+  </div>
   <%= f.submit class: "btn btn-secondary" %>
 <% end %>
