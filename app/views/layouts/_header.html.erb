@@ -11,7 +11,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item me-3">
             <% if @search %>
-              <%= form_with url: search_path(@list), method: :get, class: "d-flex align-items-center gap-2"  do |f| %>
+              <%= form_with url: search_path(@list), method: :get, class: "d-flex align-items-center gap-2" do |f| %>
                 <%= f.text_field :title %>
                 <%= f.submit "Search", class: "btn btn-primary" %>
               <% end %>
@@ -20,8 +20,8 @@
           <li class="nav-item"><%= link_to "Home", home_path, class: "nav-link #{"active" if current_page?(home_path) || current_page?(root_path)}" %></li>
           <li class="nav-item"><%= link_to "My bookings", bookings_path, class: "nav-link #{"active" if current_page?(bookings_path)}" %></li>
           <li class="nav-item"><%= link_to "New booking", new_booking_path, class: "nav-link #{"active" if current_page?(new_booking_path)}" %></li>
+          <li class="nav-item"><%= link_to "Demons", demons_path, class: "nav-link #{"active" if current_page?(demons_path)}" %></li>
           <li class="nav-item"><%= link_to "About", about_path, class: "nav-link #{"active" if current_page?(about_path)}" %></li>
-          <li class="nav-item">
             <% if user_signed_in? %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
             <% else %>
