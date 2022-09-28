@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-
+  
+  get "/bookings/new/search", to: "bookings#search", as: "search"
+  
   resources :bookings, shallow: true, only: [:new, :index, :show, :create, :destroy]
 
   resources :demons, shallow: true, only: [:new, :show, :create, :index, :destroy]
