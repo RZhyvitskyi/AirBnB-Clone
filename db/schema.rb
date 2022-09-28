@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_28_092919) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_28_075054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,8 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_28_092919) do
     t.bigint "demon_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "from_date", null: false
-    t.datetime "to_date", null: false
     t.index ["demon_id"], name: "index_bookings_on_demon_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -34,7 +32,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_28_092919) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.string "picture_url"
-    t.decimal "price", precision: 5, scale: 2
     t.index ["user_id"], name: "index_demons_on_user_id"
   end
 
