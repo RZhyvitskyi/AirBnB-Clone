@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
-  before_action :get_user, only: [:index, :new, :create, :confirmation]
-  before_action :get_not_booked_demons, only: [:new]
+  before_action :get_user, only: [:index, :new, :create]
+  before_action :get_not_booked_demons, only: [:new, :search]
+  before_action :get_datetime, only: [:create]
 
   def index
     @bookings = @user.bookings
@@ -12,10 +13,19 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new()
+    @search = true
+  end
+
+  def search
+    @demons = Demon.search_by_name(params[:name], @demons) unless params[:name] == ""
+
+    @booking = Booking.new
+    @search = true
+    render :new
   end
 
   def create
-    @booking = Booking.new({demon_id: booking_params[:demon_id], user_id: @user.id})
+    @booking = Booking.new(demon_id: booking_params[:demon_id], user_id: @user.id, from_date: @from_date, to_date: @to_date)
 
     if @booking.save
       redirect_to bookings_path, notice: 'Booking was successfully created.'
@@ -37,7 +47,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:demon_id)
+    params.require(:booking)
   end
 
   def get_not_booked_demons
@@ -48,5 +58,19 @@ class BookingsController < ApplicationController
 
   def get_user
     @user = current_user
+  end
+
+  def get_datetime
+    @from_date = DateTime.new(booking_params["from_date(1i)"].to_i,
+                 booking_params["from_date(2i)"].to_i,
+                 booking_params["from_date(3i)"].to_i,
+                 booking_params["from_date(4i)"].to_i,
+                 booking_params["from_date(5i)"].to_i)
+
+    @to_date = DateTime.new(booking_params["to_date(1i)"].to_i,
+                           booking_params["to_date(2i)"].to_i,
+                           booking_params["to_date(3i)"].to_i,
+                           booking_params["to_date(4i)"].to_i,
+                           booking_params["to_date(5i)"].to_i)          
   end
 end
