@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :get_user, only: [:index, :new, :create]
+  before_action :get_user, only: [:index, :new, :create, :confirmation]
   before_action :get_not_booked_demons, only: [:new]
 
   def index
@@ -22,6 +22,16 @@ class BookingsController < ApplicationController
     else
       redirect_to new_booking_path, alert: 'Booking was not created.'
     end
+  end
+
+  def confirmation
+    @bookings = @user.bookings
+  end
+
+  def update
+    @booking = Booking.find(params[:booking_id])
+    @booking.toggle! :approved
+    @booking.save
   end
 
   private
