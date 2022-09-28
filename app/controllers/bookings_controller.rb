@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :get_user, only: [:index, :new, :create]
+  before_action :get_not_booked_demons, only: [:new]
 
   def index
     @bookings = @user.bookings
@@ -11,12 +12,6 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new()
-    @bookings_all = Booking.all
-    @demons_all = Demon.all
-
-    @demons = @demons_all.reject do |demon|
-      @bookings_all.any? { |booking| booking.demon_id == demon.id }
-    end
   end
 
   def create
@@ -29,16 +24,16 @@ class BookingsController < ApplicationController
     end
   end
 
-  def destroy
-    @booking = Booking.find(params[:id])
-    @booking.destroy
-    redirect_to bookings_path, status: :see_other
-  end
-
   private
 
   def booking_params
     params.require(:booking).permit(:demon_id)
+  end
+
+  def get_not_booked_demons
+    @bookings = Booking.all
+    booked_demons = @bookings.map { |booking| booking.demon }
+    @demons = Demon.not_booked(booked_demons)
   end
 
   def get_user
