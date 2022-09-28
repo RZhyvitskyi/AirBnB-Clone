@@ -8,6 +8,7 @@
 
 puts 'Cleaning database...'
 
+Booking.destroy_all
 User.destroy_all
 
 10.times do |i|
@@ -18,6 +19,8 @@ User.destroy_all
     demon = Demon.create(name: Faker::Fantasy::Tolkien.character,
                        speciality: Faker::Fantasy::Tolkien.race,
                        location: Faker::Fantasy::Tolkien.location,
+                       picture_url: "https://app.pixelencounter.com/api/basic/monsters/#{rand(10..1000)}/png?size=1000",
+                       price: rand(1..100),
                        user_id: user.id)
   end
 end
