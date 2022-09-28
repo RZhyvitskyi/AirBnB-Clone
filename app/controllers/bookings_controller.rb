@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :get_user, only: [:index, :new, :create]
+  before_action :get_user, only: [:index, :new, :create, :confirmation]
   before_action :get_not_booked_demons, only: [:new, :search]
   before_action :get_datetime, only: [:create]
 
