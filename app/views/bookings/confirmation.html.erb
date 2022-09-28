@@ -1,0 +1,15 @@
+<h3>Please confirm this booking </h3>
+
+<div>
+  <% @bookings.each do |booking| %>
+    <div>
+      <%= link_to booking.demon.name, booking %>
+      <%=  render "form", booking: booking %>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
