@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'bookings/index'
-  get 'bookings/show'
-  get 'bookings/new'
   root to: 'pages#home'
   get "/home", to: "pages#home", as: "home"
   get "/about", to: "pages#about", as: "about"
@@ -12,7 +9,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :bookings, shallow: true, only: [:new, :index, :show, :create, :destroy] do
-  end
+  resources :bookings, shallow: true, only: [:new, :index, :show, :create, :destroy]
 
+  resources :demons, shallow: true, only: [:new, :show, :create, :index, :destroy]
 end
