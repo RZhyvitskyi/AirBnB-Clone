@@ -1,2 +1,10 @@
 <h1>Demons#index</h1>
 <p>Find me in app/views/demons/index.html.erb</p>
+
+<h2>Demons</h2>
+<div>
+    <% @demons.each do |demon| %>
+        <%= render demon %>
+        <p><%= link_to "Show this demon", demon %></p>
+    <% end %>
+</div>
