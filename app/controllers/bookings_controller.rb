@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :get_user, only: [:index, :new, :create]
-  before_action :get_not_booked_demons, only: [:new]
+  before_action :get_not_booked_demons, only: [:new, :search]
   before_action :get_datetime, only: [:create]
 
   def index
@@ -13,6 +13,15 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new()
+    @search = true
+  end
+
+  def search
+    @demons = Demon.search_by_name(params[:name], @demons) unless params[:name] == ""
+
+    @booking = Booking.new
+    @search = true
+    render :new
   end
 
   def create
