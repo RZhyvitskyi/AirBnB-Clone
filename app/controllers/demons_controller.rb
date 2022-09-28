@@ -2,7 +2,6 @@ class DemonsController < ApplicationController
   before_action :get_demons, only: [:index, :new]
 
   def index
-    @demons = Demon.all
   end
 
   def show
