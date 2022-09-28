@@ -1,7 +1,7 @@
 <h2>New booking</h2>
 <div>
   <% @demons.each do |demon| %>
-    <div>
+    <div class="mb-3">
       <%= render "booking", demon: demon, booking: @booking, user: @user %>
     </div>
   <% end %>
