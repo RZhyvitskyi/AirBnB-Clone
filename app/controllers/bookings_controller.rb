@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
   end
 
   def confirmation
-    @bookings = @user.bookings
+    @bookings = @user.my_demon_bookings
   end
 
   def update
