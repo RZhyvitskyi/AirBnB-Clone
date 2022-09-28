@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: "pages#home"
   get "/home", to: "pages#home", as: "home"
   get "/about", to: "pages#about", as: "about"
 
@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   resources :bookings, shallow: true, only: [:new, :index, :show, :create, :destroy]
 
-  resources :demons, shallow: true, only: [:new, :show, :create, :index, :destroy]
+  resources :demons, shallow: true, only: [:new, :index, :show, :create, :destroy]
 end
