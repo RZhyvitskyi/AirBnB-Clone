@@ -3,4 +3,6 @@ class Demon < ApplicationRecord
   scope :search_by_name, ->(name, not_booked_demons) { not_booked_demons.where("lower(name) LIKE ?", "%#{name.strip.downcase}%") }
 
   belongs_to :user
+
+  has_many :reviews, dependent: :destroy
 end
