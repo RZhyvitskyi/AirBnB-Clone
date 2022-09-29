@@ -5,6 +5,9 @@
     <h5 class="card-title"><%= @booking.demon.name %></h5>
     <p class="card-text">Speciality of your Demon: <%= @booking.demon.speciality %></p>
     <p class="card-text">Location of your Demon: <%= @booking.demon.location %></p>
+    <p class="card-text">Your torture starts on: <%= @booking.from_date %></p>
+    <p class="card-text">Your torture ends on: <%= @booking.to_date %></p>
+
     <%= button_to "Delete booking", booking_path, method: :delete, class: "btn btn-danger" %>
   </div>
 </div>
