@@ -1,14 +1,11 @@
-<h1>Demons#show</h1>
-<p>Find me in app/views/demons/show.html.erb</p>
-
-<div>
-    <div>
-    <%= @demon.name %>
+<h2 class="mb-3"></h2>
+<div class="card mx-auto" style="max-width: 50rem;">
+    <div class="p-3 bg-secondary text-white">
+        <h3 class="card-title text-center"><%= @demon.name %></h3>
     </div>
-    <div>
-    <%= @demon.speciality %>
-    </div>
-    <div>
-    <%= @demon.location %>
-    </div>
+    <%= image_tag @demon.picture_url, class: "card-img-top p-5" %>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item text-center"><strong>Speciality:</strong> <%= @demon.speciality %></li>
+        <li class="list-group-item text-center"><strong>Location:</strong> <%= @demon.location %></li>
+    </ul>
 </div>
