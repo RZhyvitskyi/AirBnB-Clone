@@ -1,12 +1,13 @@
 class DemonsController < ApplicationController
   before_action :get_demons, only: [:index, :new]
-  before_action :get_user, only: [:create]
+  before_action :get_user, only: [:show, :create]
 
   def index
   end
 
   def show
     @demon = Demon.find(params[:id])
+    @review = Review.new
   end
 
   def new

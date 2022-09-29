@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   
   resources :bookings, shallow: true, only: [:new, :index, :show, :create, :destroy]
 
-  resources :demons, shallow: true, only: [:new, :index, :show, :create, :destroy]
+  resources :demons, shallow: true, only: [:new, :index, :show, :create, :destroy] do
+    resources :reviews, shallow: true, only: [:create, :destroy]
+  end
 end
