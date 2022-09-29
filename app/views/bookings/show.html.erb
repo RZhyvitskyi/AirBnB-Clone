@@ -1,4 +1,12 @@
-<h2><%= @booking.demon.name %></h2>
-<%= button_to "Delete booking", booking_path, method: :delete, class: "btn btn-danger" %>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%= @booking.demon.picture_url %>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= @booking.demon.name %></h5>
+    <p class="card-text">Speciality of your Demon: <%= @booking.demon.speciality %></p>
+    <p class="card-text">Location of your Demon: <%= @booking.demon.location %></p>
+    <%= button_to "Delete booking", booking_path, method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
 
 
