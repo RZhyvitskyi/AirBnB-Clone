@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :demons, dependent: :destroy
-  has_many :reviews, dependent: :destroy
+  has_many :reviews
 
   def my_demon_bookings
     Booking.where(demon_id: self.demons)
