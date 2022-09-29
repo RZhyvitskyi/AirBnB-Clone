@@ -1,0 +1,11 @@
+<%= form_with model: demon, class: "d-flex flex-column align-items-start gap-2" do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "mb-3 p-2", style: "min-width:300px;" %>
+  <%= f.label :speciality %>
+  <%= f.text_field :speciality, class: "mb-3 p-2", style: "min-width:300px;" %>
+  <%= f.label :location %>
+  <%= f.text_field :location, class: "mb-3 p-2", style: "min-width:300px;" %>
+  <%= f.label :picture_url %>
+  <%= f.text_field :picture_url, class: "mb-5 p-2", style: "min-width:300px;" %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
