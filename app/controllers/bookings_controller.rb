@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :get_user, only: [:index, :new, :create, :confirmation]
+  before_action :get_user, only: [:index, :new, :create, :confirmation, :update]
   before_action :get_not_booked_demons, only: [:new, :search]
   before_action :get_datetime, only: [:create]
 
@@ -48,6 +48,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @booking.toggle! :approved
     @booking.save
+    UserMailer.with(user: @booking.user).confirmation_email.deliver_now
   end
 
   private
