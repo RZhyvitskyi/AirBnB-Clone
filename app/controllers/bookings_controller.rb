@@ -48,7 +48,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @booking.toggle! :approved
     @booking.save
-    UserMailer.with(user: @user).confirmation_email.deliver_now
+    UserMailer.with(user: @booking.user).confirmation_email.deliver_now
   end
 
   private
