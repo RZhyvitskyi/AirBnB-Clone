@@ -1,10 +1,15 @@
-<h1>Demons#index</h1>
-<p>Find me in app/views/demons/index.html.erb</p>
-
-<h2>Demons</h2>
-<div>
-    <% @demons.each do |demon| %>
-        <%= render demon %>
-        <p><%= link_to "Show this demon", demon %></p>
-    <% end %>
+<h2 class="mb-5 text-center">Demons</h2>
+<div class="text-center d-flex justify-content-center">
+    <ul class="list-group">
+        <% @demons.each do |demon| %>
+            <%= link_to demon, class: "list-group-item d-flex justify-content-between align-items-center gap-3" do %>
+                <%= image_tag demon.picture_url, class: "img-fluid", style: "max-width: 100px" %>
+                <div>
+                    <h5 class="m-0"><%= demon.name %></h5>
+                    <p class="m-0"><%= demon.location %></p>
+                </div>
+                <%= button_to "Show this demon", demon, method: :get, class: "btn btn-secondary"%>
+            <% end %>
+        <% end %>
+        </ul>
 </div>
