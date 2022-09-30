@@ -1,15 +1,28 @@
-<%= form_with model: booking, class: "d-flex flex-column align-items-start" do |f| %>
-  <%= f.hidden_field :demon_id, value: demon.id %>
-  <%= f.label demon.name, class: "mb-3" %>
-  <div class="mb-3 d-flex flex-column gap-3">
-    <div>
-      <%= f.label :from_date %>
-      <%= f.datetime_select :from_date, :minute_step => 15 %>
-    </div>
-    <div>
-      <%= f.label :to_date %>
-      <%= f.datetime_select :to_date, :minute_step => 15 %>
-    </div>
+<%= form_with model: booking, class: "card d-flex flex-column p-3" do |f| %>
+  <div class="text-center mb-3">
+    <%= image_tag demon.picture_url, style: "max-width: 15rem" %>
   </div>
-  <%= f.submit class: "btn btn-secondary" %>
+  <div class="d-flex flex-column align-items-center mb-3">
+    <%= f.hidden_field :demon_id, value: demon.id %>
+    <h4><%= f.label demon.name, class: "mb-3" %></h4>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-center bg-info">
+        <span class="me-3">Location:</span>
+        <span> <%= demon.location %></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <%= f.label :from_date, class: "me-3" %>
+        <div class="">
+          <%= f.datetime_select :from_date, :minute_step => 15 %>
+        </div>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <%= f.label :to_date %>
+        <div class="">
+          <%= f.datetime_select :to_date, :minute_step => 15 %>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <%= f.submit class: "btn btn-success align-self-center" %>
 <% end %>
