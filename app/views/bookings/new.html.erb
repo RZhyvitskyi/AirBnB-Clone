@@ -1,7 +1,7 @@
-<h2>New booking</h2>
-<div>
+<h2 class="text-center mb-5">New booking</h2>
+<div class="row row-cols-1 row-cols-md-2 g-4">
   <% @demons.each do |demon| %>
-    <div class="mb-3">
+    <div class="col">
       <%= render "booking", demon: demon, booking: @booking, user: @user %>
     </div>
   <% end %>
