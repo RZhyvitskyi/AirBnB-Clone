@@ -1,8 +1,14 @@
-<h3>Bookings for <%= @user.name %></h3>
-<div>
-  <% @bookings.each do |booking| %>
-    <div>
-      <%= link_to booking.demon.name, booking %>
-    </div>
-  <% end %>
+<h2 class="mb-5 text-center">Bookings for <%= @user.name %></h2>
+<div class="d-flex justify-content-center">
+  <ul class="list-group">
+    <% @bookings.each do |booking| %>
+        <%= link_to booking, class: "list-group-item d-flex justify-content-between align-items-center gap-5" do %>
+          <div class="">
+            <h5><%= booking.demon.name %></h5>
+            <p class="m-0"><%= booking.demon.location %></p>
+          </div>
+          <%= button_to "Show this booking", booking, method: :get, class: "btn btn-secondary"%>
+        <% end %>
+    <% end %>
+  </ul>
 </div>
