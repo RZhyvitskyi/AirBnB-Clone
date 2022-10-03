@@ -1,0 +1,11 @@
+<h2>All users</h2>
+<ul class="list-group">
+  <% @users.each do |user| %>
+    <li class="list-group-item">
+      <h4><%= user.name %></h4>
+      <p>Email: <%= user.email %></p>
+      <p>Roles: <%= user.roles.pluck(:name) %></p>
+      <%= link_to "Edit role", edit_user_path(user) %>
+    </li>
+  <% end %>
+</ul>

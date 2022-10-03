@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :demons, shallow: true, only: [:new, :index, :show, :create, :destroy] do
     resources :reviews, shallow: true, only: [:create, :destroy]
   end
+
+  resources :users
 end
