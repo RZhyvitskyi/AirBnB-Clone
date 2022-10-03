@@ -5,7 +5,7 @@
       <h4><%= user.name %></h4>
       <p>Email: <%= user.email %></p>
       <p>Roles: <%= user.roles.pluck(:name) %></p>
-      <%= link_to "Edit role", edit_user_path(user) %>
+      <%= link_to "Edit role", edit_user_path(user), class: "btn btn-secondary" %>
     </li>
   <% end %>
 </ul>
