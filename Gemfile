@@ -38,6 +38,7 @@ gem 'bootstrap'
 gem "devise"
 
 gem "faker"
+gem "rolify"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
