@@ -244,6 +244,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rolify (6.0.0)
     rspec (3.11.0)
       rspec-core (~> 3.11.0)
       rspec-expectations (~> 3.11.0)
@@ -341,6 +342,7 @@ DEPENDENCIES
   rack-livereload
   rails (~> 7.0.4)
   rails-controller-testing
+  rolify
   rspec
   rspec-rails
   sass-rails
