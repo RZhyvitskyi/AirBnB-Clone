@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to users_path, notice: 'Demon was successfully created.'
     else
-      redirect_to users_path, alert: 'Demon was not created.'
+      redirect_to edit_user_path(@user), alert: @user.errors[:roles][0]
     end
   end
 
