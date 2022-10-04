@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
   validate :must_have_a_role, on: :update
 
+  def my_demon_bookings
+    Booking.where(demon_id: self.demons)
+  end
+
   private
 
   def must_have_a_role
@@ -23,9 +27,5 @@ class User < ApplicationRecord
 
   def assign_default_role
     self.add_role(:newuser) if self.roles.blank?
-  end
-
-  def my_demon_bookings
-    Booking.where(demon_id: self.demons)
   end
 end
