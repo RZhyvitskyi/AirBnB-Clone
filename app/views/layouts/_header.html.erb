@@ -22,7 +22,9 @@
           <li class="nav-item"><%= link_to "New booking", new_booking_path, class: "nav-link #{"active" if current_page?(new_booking_path)}" %></li>
           <li class="nav-item"><%= link_to "Demons", demons_path, class: "nav-link #{"active" if current_page?(demons_path)}" %></li>
           <li class="nav-item"><%= link_to "New demon", new_demon_path, class: "nav-link #{"active" if current_page?(new_demon_path)}" %></li>
+          <% if (current_user && policy(User).index? ) %>
            <li class="nav-item"><%= link_to "Users", users_path, class: "nav-link #{"active" if current_page?(users_path)}" %></li>
+          <% end %>
           <li class="nav-item"><%= link_to "About", about_path, class: "nav-link #{"active" if current_page?(about_path)}" %></li>
            <li class="nav-item">
             <% if user_signed_in? %>
