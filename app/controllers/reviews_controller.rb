@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
   def create
     @user = current_user
     @demon = Demon.find(params[:demon_id])
+    # now you're just flexing, ** is unnecessary
     @review = Review.new(**review_params)
     @review.user = @user
     @review.demon = @demon

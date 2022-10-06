@@ -4,6 +4,7 @@
     <% @bookings.each do |booking| %>
         <%= link_to booking, class: "list-group-item d-flex justify-content-between align-items-center gap-5" do %>
           <div class="">
+            <!-- N+1 Red Alert - Abandon Ship -->
             <h5><%= booking.demon.name %></h5>
             <p class="m-0"><%= booking.demon.location %></p>
           </div>
