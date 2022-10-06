@@ -3,6 +3,7 @@ class DemonsController < ApplicationController
   before_action :get_user, only: [:show, :create]
 
   def index
+    # Talk about pagination
   end
 
   def show

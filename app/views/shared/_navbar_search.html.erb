@@ -1,0 +1,6 @@
+<li class="nav-item me-3">  
+  <%= form_with url: search_path, method: :get, class: "d-flex align-items-center gap-2"  do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "Search", class: "btn" %>
+  <% end %>
+</li>

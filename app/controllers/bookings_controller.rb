@@ -4,7 +4,9 @@ class BookingsController < ApplicationController
   before_action :get_datetime, only: [:create]
 
   def index
-    @bookings = @user.bookings
+    # includes saves you from N + 1 queries. Now the DB will only get queried once to get all demons
+    # associated with the bookings
+    @bookings = @user.bookings.includes(:demon)
   end
 
   def show
@@ -13,11 +15,13 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new()
+    # The controller shouldn't decide what components get rendered in the view
     @search = true
   end
 
+  # You could consider incorporating the search as part of the DemonsController#index
   def search
-    @demons = Demon.search_by_name(params[:name], @demons) unless params[:name] == ""
+    @demons = Demon.search_by_name(params[:name], @demons) if params[:name].present?
 
     @booking = Booking.new
     @search = true
@@ -25,7 +29,9 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(demon_id: booking_params[:demon_id], user_id: @user.id, from_date: @from_date, to_date: @to_date)
+    # This should just be strong params
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
 
     if @booking.save
       redirect_to bookings_path, notice: 'Booking was successfully created.'
@@ -54,10 +60,12 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking)
+    # Missing the permitted attributes
+    params.require(:booking).permit(:from_date, :to_date, :demon_id)
   end
 
   def get_not_booked_demons
+    # This belongs in the booking model
     @bookings = Booking.all
     booked_demons = @bookings.map { |booking| booking.demon }
     @demons = Demon.not_booked(booked_demons)
@@ -68,6 +76,7 @@ class BookingsController < ApplicationController
   end
 
   def get_datetime
+    # Unnecessary
     @from_date = DateTime.new(booking_params["from_date(1i)"].to_i,
                  booking_params["from_date(2i)"].to_i,
                  booking_params["from_date(3i)"].to_i,

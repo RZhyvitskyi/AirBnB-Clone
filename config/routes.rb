@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   
   get "/bookings/new/search", to: "bookings#search", as: "search"
   
-  resources :bookings, shallow: true, only: [:new, :index, :show, :create, :destroy]
+  resources :bookings, only: [:new, :index, :show, :create, :destroy]
 
+  # shallow: true is redundant for demons
   resources :demons, shallow: true, only: [:new, :index, :show, :create, :destroy] do
     resources :reviews, shallow: true, only: [:create, :destroy]
   end
